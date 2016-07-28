@@ -23,6 +23,7 @@ and add somewhere in the page
 - remove material-ui dependency
 - write more documentation
 - make customizable
+- add manual retry button
 
 ## Thanks
 
