@@ -1,5 +1,7 @@
 # Connection Status Indicator for Meteor with React
 
+![How it looks](http://i.imgur.com/3W1cREh.gif)
+
 ## Install
 
 ```sh
@@ -25,6 +27,7 @@ and add somewhere in the page
 ## Thanks
 
 - [React NPM Boilerplate](https://github.com/juliancwirko/react-npm-boilerplate)
+- [React Meteor Status Smart Package](https://github.com/creatorkuang/react-meteor-status/)
 
 ## License
 
