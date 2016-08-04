@@ -23,7 +23,7 @@ and add somewhere in the page
 ```
 
 ## TODO
-- remove material-ui dependency
+- ~~remove material-ui dependency~~
 - write more documentation
 - make customizable
 - add manual retry button
