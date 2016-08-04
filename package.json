@@ -1,6 +1,6 @@
 {
   "name": "meteor-react-status",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Connection Status Indicator for Meteor with React",
   "repository": {
     "type": "git",
@@ -46,10 +46,9 @@
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1",
-    "react-addons-test-utils": "^15.0.0",
+    "react-addons-test-utils": "^15.3.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
-    "react-addons-test-utils": "^15.3.0",
     "sinon": "^1.17.3"
   },
   "peerDependencies": {
