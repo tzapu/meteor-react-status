@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'react', 'material-ui/LinearProgress'], factory);
+    define(['exports', 'react'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('react'), require('material-ui/LinearProgress'));
+    factory(exports, require('react'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.react, global.LinearProgress);
+    factory(mod.exports, global.react);
     global.index = mod.exports;
   }
-})(this, function (exports, _react, _LinearProgress) {
+})(this, function (exports, _react) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -18,8 +18,6 @@
   });
 
   var _react2 = _interopRequireDefault(_react);
-
-  var _LinearProgress2 = _interopRequireDefault(_LinearProgress);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -107,6 +105,7 @@
             visibility: this.state.isConnected ? 'hidden' : 'visible',
             transform: !this.state.isConnected ? 'translate3d(0, 0, 0)' : 'translate3d(0, 48px, 0)',
             transition: 'transform 400ms cubic-bezier(0.23, 1, 0.32, 1), visibility 1000ms cubic-bezier(0.23, 1, 0.32, 1)'
+
           },
           status: {
             height: '48px',
@@ -116,11 +115,25 @@
             textAlign: 'center',
             minWidth: this.props.fullWidth ? '100%' : '288px',
             backgroundColor: '#D32F2F',
-            transition: 'background-color 400ms linear'
+            transition: 'background-color 400ms linear',
+            overflow: 'hidden'
           },
           statusText: {
             fontSize: '14px',
-            color: '#fff'
+            color: '#FFFFFF'
+          },
+          root: {
+            position: 'relative',
+            height: 4,
+            display: 'block',
+            width: '100%',
+            margin: 0,
+            overflow: 'hidden',
+            backgroundColor: '#CCCCCC'
+          },
+          bar: {
+            height: '100%',
+            transition: 'width 300ms linear, background-color 400ms linear'
           }
         };
       }
@@ -199,14 +212,18 @@
           if (this.state.isConnecting) {
             text = 'connecting';
             styles.status.backgroundColor = '#81D4FA';
+            styles.bar.width = '100%';
           } else {
             text = 'waiting to retry connection';
             styles.status.backgroundColor = '#D32F2F';
+            //styles.bar.transition = transitions.create('width', '.3s', null, 'linear');
+            styles.bar.width = Math.round(this.state.retryTime / this.state.retryInterval * 100) + '%';
           }
         } else {
           text = 'connected';
           styles.status.backgroundColor = '#4CAF50';
         }
+        styles.bar.backgroundColor = styles.status.backgroundColor;
 
         return _react2.default.createElement(
           'div',
@@ -214,12 +231,11 @@
           _react2.default.createElement(
             'div',
             { style: styles.status },
-            _react2.default.createElement(_LinearProgress2.default, {
-              color: styles.status.backgroundColor,
-              mode: this.state.retryInterval !== 0 ? 'determinate' : 'indeterminate' //not working really, seems not to be triggering an update
-              ,
-              value: this.state.retryTime / this.state.retryInterval * 100
-            }),
+            _react2.default.createElement(
+              'div',
+              { style: styles.root },
+              _react2.default.createElement('div', { style: styles.bar })
+            ),
             _react2.default.createElement(
               'div',
               { style: styles.statusText },

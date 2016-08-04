@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import LinearProgress from 'material-ui/LinearProgress';
-
 class ConnectionStatus extends React.Component {
   constructor(props) {
     super(props);
@@ -26,8 +24,7 @@ class ConnectionStatus extends React.Component {
         visibility: this.state.isConnected ? 'hidden' : 'visible',
         transform: !this.state.isConnected ? 'translate3d(0, 0, 0)' : 'translate3d(0, 48px, 0)',
         transition: 'transform 400ms cubic-bezier(0.23, 1, 0.32, 1), visibility 1000ms cubic-bezier(0.23, 1, 0.32, 1)',
-        //transition: `${transitions.easeOut('400ms', 'transform')}, ${
-        //transitions.easeOut('400ms', 'visibility')}`,
+
       },
       status: {
         height: '48px',
@@ -38,10 +35,24 @@ class ConnectionStatus extends React.Component {
         minWidth: this.props.fullWidth ? '100%' : '288px',
         backgroundColor: '#D32F2F',
         transition: 'background-color 400ms linear',
+        overflow: 'hidden',
       },
       statusText: {
         fontSize: '14px',
-        color: '#fff',
+        color: '#FFFFFF',
+      },
+      root: {
+        position: 'relative',
+        height: 4,
+        display: 'block',
+        width: '100%',
+        margin: 0,
+        overflow: 'hidden',
+        backgroundColor: '#CCCCCC',
+      },
+      bar: {
+        height: '100%',
+        transition: 'width 300ms linear, background-color 400ms linear',
       },
     };
   }
@@ -115,27 +126,26 @@ class ConnectionStatus extends React.Component {
       if (this.state.isConnecting) {
         text = 'connecting';
         styles.status.backgroundColor = '#81D4FA';
+        styles.bar.width = '100%';
       } else {
         text = 'waiting to retry connection';
         styles.status.backgroundColor = '#D32F2F';
+        //styles.bar.transition = transitions.create('width', '.3s', null, 'linear');
+        styles.bar.width = `${Math.round(this.state.retryTime / this.state.retryInterval * 100)}%`;
       }
     } else {
       text = 'connected';
       styles.status.backgroundColor = '#4CAF50';
     }
+    styles.bar.backgroundColor = styles.status.backgroundColor;
 
     return (
       <div style={styles.statusContainer}>
         <div style={styles.status}>
-          <LinearProgress
-            color={styles.status.backgroundColor}
-            mode={
-              this.state.retryInterval !== 0
-              ? 'determinate'
-              : 'indeterminate' //not working really, seems not to be triggering an update
-            }
-            value={this.state.retryTime / this.state.retryInterval * 100}
-          />
+          <div style={styles.root}>
+            <div style={styles.bar}>
+            </div>
+          </div>
           <div style={styles.statusText}>
             {text}
           </div>

@@ -15,7 +15,8 @@
   "keywords": [
     "react-component",
     "react",
-    "meteor"
+    "meteor",
+    "connection status"
   ],
   "options": {
     "mocha": "--require scripts/mocha_runner src/**/__tests__/**/*.js"
@@ -48,17 +49,14 @@
     "react-addons-test-utils": "^15.0.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
+    "react-addons-test-utils": "^15.3.0",
     "sinon": "^1.17.3"
   },
   "peerDependencies": {
     "react": "~0.14.8 || ^15.0.0",
-    "react-dom": "~0.14.8 || ^15.0.0",
-    "material-ui": "^0.15.2"
+    "react-dom": "~0.14.8 || ^15.0.0"
   },
   "dependencies": {
-    "babel-runtime": "^6.6.1",
-    "react": "^15.3.0",
-    "react-addons-test-utils": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "babel-runtime": "^6.6.1"
   }
 }

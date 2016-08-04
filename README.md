@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/meteor-react-status.svg)](https://badge.fury.io/js/meteor-react-status)
 
+## How it Looks
 ![How it looks](http://i.imgur.com/3W1cREh.gif)
 
 ## Install
