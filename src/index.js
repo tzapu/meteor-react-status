@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import { green600, red900 } from 'material-ui/styles/colors';
 import LinearProgress from 'material-ui/LinearProgress';
 
 class ConnectionStatus extends React.Component {
@@ -8,7 +7,6 @@ class ConnectionStatus extends React.Component {
     super(props);
     this.state = {
       isConnected: true,
-      isOffline: false,
       isConnecting: false,
       retryTime: 0,
       retryInterval: 0,
@@ -80,7 +78,6 @@ class ConnectionStatus extends React.Component {
 
       if (Meteor.status().status === 'offline') {
         this.setState({
-          isOffline: true,
           isConnected: false,
           isConnecting: false,
         })
@@ -96,7 +93,6 @@ class ConnectionStatus extends React.Component {
       if (Meteor.status().connected) {
         this.setState({
           isConnected: true,
-          isOffline: false,
           isConnecting: false,
         })
       }

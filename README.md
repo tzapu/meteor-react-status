@@ -1,5 +1,7 @@
 # Connection Status Indicator for Meteor with React
 
+[![npm version](https://badge.fury.io/js/meteor-react-status.svg)](https://badge.fury.io/js/meteor-react-status)
+
 ![How it looks](http://i.imgur.com/3W1cREh.gif)
 
 ## Install
