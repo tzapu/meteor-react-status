@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'react', 'material-ui/styles/colors', 'material-ui/LinearProgress'], factory);
+    define(['exports', 'react', 'material-ui/LinearProgress'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('react'), require('material-ui/styles/colors'), require('material-ui/LinearProgress'));
+    factory(exports, require('react'), require('material-ui/LinearProgress'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.react, global.colors, global.LinearProgress);
+    factory(mod.exports, global.react, global.LinearProgress);
     global.index = mod.exports;
   }
-})(this, function (exports, _react, _colors, _LinearProgress) {
+})(this, function (exports, _react, _LinearProgress) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -85,7 +85,6 @@
 
       _this.state = {
         isConnected: true,
-        isOffline: false,
         isConnecting: false,
         retryTime: 0,
         retryInterval: 0
@@ -161,7 +160,6 @@
 
           if (Meteor.status().status === 'offline') {
             _this2.setState({
-              isOffline: true,
               isConnected: false,
               isConnecting: false
             });
@@ -177,7 +175,6 @@
           if (Meteor.status().connected) {
             _this2.setState({
               isConnected: true,
-              isOffline: false,
               isConnecting: false
             });
           }
