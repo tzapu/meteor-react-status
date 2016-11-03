@@ -1,6 +1,6 @@
 {
   "name": "meteor-react-status",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Connection Status Indicator for Meteor with React",
   "repository": {
     "type": "git",

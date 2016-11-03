@@ -60,12 +60,12 @@ class ConnectionStatus extends React.Component {
   componentDidMount() {
     let retryHandle = null;
 
-    clearRetryInterval = () => {
+    const clearRetryInterval = () => {
       clearInterval(retryHandle)
       retryHandle = null
     }
 
-    trackStatus = () => {
+    const trackStatus = () => {
       if (Meteor.status().status === 'waiting') {
         retryHandle = retryHandle || setInterval(() => {
           let timeDiff   = Math.round((Meteor.status().retryTime - (new Date).getTime()) / 1000);

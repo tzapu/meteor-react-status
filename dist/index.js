@@ -144,12 +144,12 @@
 
         var retryHandle = null;
 
-        clearRetryInterval = function clearRetryInterval() {
+        var clearRetryInterval = function clearRetryInterval() {
           clearInterval(retryHandle);
           retryHandle = null;
         };
 
-        trackStatus = function trackStatus() {
+        var trackStatus = function trackStatus() {
           if (Meteor.status().status === 'waiting') {
             retryHandle = retryHandle || setInterval(function () {
               var timeDiff = Math.round((Meteor.status().retryTime - new Date().getTime()) / 1000);
